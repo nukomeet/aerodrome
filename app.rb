@@ -23,7 +23,7 @@ module App
   module Base
 
     def enqueue(id, h)
-      $redis.publish "aerodrome", { id: id, body: h }.to_json
+      $redis.publish "aerodrome", { id: id, updatedAt: Time.now }.merge(h).to_json
     end
 
   end
